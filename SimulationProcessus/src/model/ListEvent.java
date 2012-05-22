@@ -47,7 +47,7 @@ public class ListEvent extends ArrayList<Event>{
 	}
 	
 	
-	public void addEvent (int id, String etat, Processus p, int instant){
+	public void addEvent (String etat, Processus p, int instant){
 		ID++;
 		Event e = new Event(ID, etat, p, instant);
 		list_event.add(e);
@@ -64,4 +64,5 @@ public class ListEvent extends ArrayList<Event>{
 		return resultat;
 	}
 
+	
 }

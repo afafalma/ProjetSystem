@@ -1,23 +1,26 @@
 package model;
+import model.Assignement;
 
-import model.ListAlgorithme.type;
 
 public abstract class Algorithme {
 	
 	private int num;
 	private String nom;
-	private type t;
+	private ListEvent ListEv;
+	//private type t;
 	
-	/**
-	 * @param nom
-	 */
-	public Algorithme(String nom) {
+public Algorithme(){
+	
+}
+	
+	
+	public Algorithme(int num, String nom) {
 		super();
+		this.num = num;
 		this.nom = nom;
+		
 	}
-	
-	
-	
+
 	/**
 	 * @return the iD
 	 */
@@ -43,18 +46,33 @@ public abstract class Algorithme {
 		this.nom = nom;
 	}
 
+	/*
 	/**
 	 * @return the t
-	 */
+	 
 	public type getT() {
 		return t;
 	}
 
 	/**
 	 * @param t the t to set
-	 */
+	 
 	public void setT(type t) {
 		this.t = t;
 	}
+	*/
+	
+	
+	public ListEvent getListEv() {
+		return ListEv;
+	}
+
+
+	public void setListEv(ListEvent listEv) {
+		ListEv = listEv;
+	}
+	
+	
+	
 	
 }

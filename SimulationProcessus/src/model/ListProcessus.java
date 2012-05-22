@@ -66,9 +66,9 @@ public class ListProcessus extends ArrayList<Processus>{
 	}
 	
 
-	public void ajouterProcessus(int id, String n, ListAction l, int iDem, boolean rep, int prio, int tVie, int tAtt){
+	public void ajouterProcessus(int id, String n, ListAction l, int iDem, boolean rep, int prio, int tVie,int T_arr, int tAtt, boolean stat, int fin){
 		ID++;
-		Processus p = new Processus(ID, n, l, iDem, rep, prio, tVie, tAtt);
+		Processus p = new Processus(ID, n, l, iDem, rep, prio,T_arr, tVie, tAtt,stat,fin);
 		listProcessus.add(p);
 	}
 	

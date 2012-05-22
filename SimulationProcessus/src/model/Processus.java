@@ -5,6 +5,10 @@ package model;
 
 
 
+/**
+ * @author dienaba
+ *
+ */
 public class Processus {
 
 	/**
@@ -16,8 +20,11 @@ public class Processus {
 	private int instantDemarage;
 	private boolean repetition;
 	private int priority;
+	private int T_arrive;
 	private int tempsVie;
 	private int tempsAttente;
+	private boolean stat ;
+	private int fin; //False==>Non Executé ---------True==>Executé
 	
 	public Processus() {
 		IDProcessus = 0;
@@ -26,8 +33,11 @@ public class Processus {
 		instantDemarage = 0;
 		repetition = false;
 		priority = 0;
+		T_arrive = 0;
 		tempsVie = 0;
 		tempsAttente = 0;
+		stat = false;
+		fin = 0;
 	}
 	
 
@@ -38,12 +48,15 @@ public class Processus {
 	 * @param instantDemarage
 	 * @param repetition
 	 * @param priority
+	 * @param T_arrive
 	 * @param tempsVie
 	 * @param tempsAttente
+	 * @param stat
+	 * @param fin
 	 */
 	public Processus(int iD, String nom, ListAction listAction,
-			int instantDemarage, boolean repetition, int priority,
-			int tempsVie, int tempsAttente) {
+			int instantDemarage, boolean repetition, int priority, int T_arrive,
+			int tempsVie, int tempsAttente, boolean stat, int fin) {
 		super();
 		IDProcessus = iD;
 		this.nom = nom;
@@ -51,10 +64,15 @@ public class Processus {
 		this.instantDemarage = instantDemarage;
 		this.repetition = repetition;
 		this.priority = priority;
+		this.T_arrive = T_arrive;
 		this.tempsVie = tempsVie;
 		this.tempsAttente = tempsAttente;
+		this.stat = stat;
+		this.fin = fin;
 	}
 
+
+	
 
 	/**
 	 * @return the iD
@@ -140,6 +158,19 @@ public class Processus {
 		this.priority = priority;
 	}
 
+
+	
+	
+	public int getT_arrive() {
+		return T_arrive;
+	}
+
+
+	public void setT_arrive(int t_arrive) {
+		T_arrive = t_arrive;
+	}
+
+
 	/**
 	 * @return the tempsVie
 	 */
@@ -167,6 +198,27 @@ public class Processus {
 	public void setTempsAttente(int tempsAttente) {
 		this.tempsAttente = tempsAttente;
 	}
+
+
+	public boolean isStat() {
+		return stat;
+	}
+
+
+	public void setStat(boolean stat) {
+		this.stat = stat;
+	}
+
+	
+	public int getFin() {
+		return fin;
+	}
+
+
+	public void setFin(int fin) {
+		this.fin = fin;
+	}
+
 	
 	/*
 	public String toString(){
