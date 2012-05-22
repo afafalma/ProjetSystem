@@ -31,7 +31,7 @@ public class Sjf extends Algo_lot {
 			 ListProcessus L =new ListProcessus();
 			    boolean No_Process=true;
 			    for(int i=0;i<L1.size();i++){
-			      if((t<((Processus)L1.get(i)).getInstantDemarage()) && (((Processus)L1.get(i)).isStat()==false)){
+			      if((t<((Processus)L1.get(i)).getT_arrive()) && (((Processus)L1.get(i)).isStat()==false)){
 			        L.add((Processus)L1.get(i));
 			      }
 			    }
@@ -46,11 +46,11 @@ public class Sjf extends Algo_lot {
 		    Processus P_return_1=new Processus();
 		    if(Vv1.isEmpty()==false){
 		      int index=0;
-		      int min=((Processus)(Vv1.get(0))).getID();
+		      int min=((Processus)(Vv1.get(0))).getT_arrive();
 		      for(int i=0;i<Vv1.size();i++){
-		        if(min>((Processus)Vv1.get(i)).getID()){
+		        if(min>((Processus)Vv1.get(i)).getT_arrive()){
 		          index=i;
-		          min=((Processus)Vv1.get(i)).getID();
+		          min=((Processus)Vv1.get(i)).getT_arrive();
 		        }
 		      }
 		    P_return_1=(Processus)Vv1.get(index);
@@ -66,7 +66,7 @@ public class Sjf extends Algo_lot {
 			  ListProcessus L=new ListProcessus();
 		    boolean No_Process=true;
 		    for(int i=0;i<L1.size();i++){
-		      if((t>=((Processus)L1.get(i)).getInstantDemarage()) && (((Processus)L1.get(i)).isStat()==false)){
+		      if((t>=((Processus)L1.get(i)).getT_arrive()) && (((Processus)L1.get(i)).isStat()==false)){
 		        No_Process=false;
 		        L.add((Processus)L1.get(i));
 		      }
@@ -81,12 +81,12 @@ public class Sjf extends Algo_lot {
 		//Methode pour la recherche du Processus "P" a exectué a l'instant "t" a partir de la liste "V" SJF
 		  // a modifier pr avoir le tems de chaque liste d'actions de chaque processus pr pouvoir comparer
 		  public   Processus SJF(ListProcessus V){
-		    int SJ=((Processus)V.get(0)).getInstantDemarage();
+		    int SJ=((Processus)V.get(0)).getT_arrive();
 		    int index=0;
 		    for(int i=0;i<V.size();i++){
-		      if(((Processus)V.get(i)).getInstantDemarage()<=SJ){
+		      if(((Processus)V.get(i)).getT_arrive()<=SJ){
 		        index=i;
-		        SJ=((Processus)V.get(i)).getInstantDemarage();
+		        SJ=((Processus)V.get(i)).getT_arrive();
 		      }
 		    }
 		    return ((Processus)V.get(index));
@@ -96,8 +96,8 @@ public class Sjf extends Algo_lot {
 		//Methode de verification pour la mise a jour de T_now
 		  private   int Time_Now_1(Processus P1,int t){
 		    int tn=t;
-		    if(P1.getInstantDemarage()>tn) 
-		    	tn=P1.getInstantDemarage();
+		    if(P1.getT_arrive()>tn) 
+		    	tn=P1.getT_arrive();
 		    
 		    return tn;
 		  }

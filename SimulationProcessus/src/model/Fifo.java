@@ -25,7 +25,7 @@ public class Fifo extends Algo_lot {
 		ListProcessus L =new ListProcessus();
 		boolean No_Process=true;
 		for(int i=0;i<L1.size();i++){
-			if((t<((Processus)L1.get(i)).getInstantDemarage()) && (((Processus)L1.get(i)).isStat()==false)){
+			if((t<((Processus)L1.get(i)).getT_arrive()) && (((Processus)L1.get(i)).isStat()==false)){
 				L.add((Processus)L1.get(i));
 			}
 		}
@@ -40,11 +40,11 @@ public class Fifo extends Algo_lot {
 		Processus P_return_1=new Processus();
 		if(Vv1.isEmpty()==false){
 			int index=0;
-			int min=((Processus)(Vv1.get(0))).getID();
+			int min=((Processus)(Vv1.get(0))).getT_arrive();
 			for(int i=0;i<Vv1.size();i++){
-				if(min>((Processus)Vv1.get(i)).getID()){
+				if(min>((Processus)Vv1.get(i)).getT_arrive()){
 					index=i;
-					min=((Processus)Vv1.get(i)).getID();
+					min=((Processus)Vv1.get(i)).getT_arrive();
 				}
 			}
 			P_return_1=(Processus)Vv1.get(index);
@@ -60,7 +60,7 @@ public class Fifo extends Algo_lot {
 		ListProcessus L=new ListProcessus();
 		boolean No_Process=true;
 		for(int i=0;i<L1.size();i++){
-			if((t>=((Processus)L1.get(i)).getInstantDemarage()) && (((Processus)L1.get(i)).isStat()==false)){
+			if((t>=((Processus)L1.get(i)).getT_arrive()) && (((Processus)L1.get(i)).isStat()==false)){
 				No_Process=false;
 				L.add((Processus)L1.get(i));
 			}
@@ -75,12 +75,12 @@ public class Fifo extends Algo_lot {
 
 	//Methode pour la recherche du Processus "P" a exectué a l'instant "t" a partir de la liste "V" FIFO
 	private   Processus FIFO(ListProcessus Vv1){
-		int F=((Processus)Vv1.get(0)).getInstantDemarage();
+		int F=((Processus)Vv1.get(0)).getT_arrive();
 		int index=0;
 		for(int i=0;i<Vv1.size();i++){
-			if(((Processus)Vv1.get(i)).getInstantDemarage()<=F){
+			if(((Processus)Vv1.get(i)).getT_arrive()<=F){
 				index=i;
-				F=((Processus)Vv1.get(i)).getInstantDemarage();
+				F=((Processus)Vv1.get(i)).getT_arrive();
 			}
 		}
 		return ((Processus)Vv1.get(index));
