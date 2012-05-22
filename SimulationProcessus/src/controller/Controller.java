@@ -1,10 +1,11 @@
 package controller;
 
-import view.ConfigGeneral;
+import view.GeneralConfiguration;
+
 
 public class Controller {
 
-	private ConfigGeneral ConfVue;
+	private GeneralConfiguration ConfVue;
 
 	
 	/**
@@ -12,14 +13,14 @@ public class Controller {
 	 */
 	public Controller() {
 		super();
-		ConfVue = new ConfigGeneral();
+		ConfVue = new GeneralConfiguration();
 	}
 
 
 	/**
 	 * @return the confVue
 	 */
-	public ConfigGeneral getConfVue() {
+	public GeneralConfiguration getConfVue() {
 		return ConfVue;
 	}
 
@@ -27,7 +28,7 @@ public class Controller {
 	/**
 	 * @param confVue the confVue to set
 	 */
-	public void setConfVue(ConfigGeneral confVue) {
+	public void setConfVue(GeneralConfiguration confVue) {
 		ConfVue = confVue;
 	}
 	

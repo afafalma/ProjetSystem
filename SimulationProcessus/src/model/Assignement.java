@@ -156,4 +156,7 @@ public class Assignement {
 
 
 
+	public void simulation (){
+		//algo.simulation(this);
+	}
 }
