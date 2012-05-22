@@ -2,14 +2,14 @@
  * 
  */
 package model;
-
-import java.util.AbstractCollection;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
-public class ListAction extends AbstractCollection<Action> {
+public class ListAction extends ArrayList<Action> {
 
+	/**
+	 *
+	 */
 	private static int ID=1;
 	
 	public enum typeAction {
@@ -23,10 +23,10 @@ public class ListAction extends AbstractCollection<Action> {
 		}
 	}
 	
-	private ArrayList<Action> listActions;
+	private ListAction list_action;
 	
 	public ListAction(){
-		listActions = new ArrayList<Action>();
+		list_action = new ListAction();
 	}
 	
 	
@@ -51,15 +51,15 @@ public class ListAction extends AbstractCollection<Action> {
 	/**
 	 * @return the listActions
 	 */
-	public ArrayList<Action> getListActions() {
-		return listActions;
+	public ListAction getListActions() {
+		return list_action;
 	}
 
 	/**
 	 * @param listActions the listActions to set
 	 */
-	public void setListActions(ArrayList<Action> listActions) {
-		this.listActions = listActions;
+	public void setListActions(ListAction list) {
+		this.list_action = list;
 	}
 
 	/*********************************************************************/
@@ -69,13 +69,13 @@ public class ListAction extends AbstractCollection<Action> {
 	public void ajoutAction(int duree, typeAction t){
 		ID++;
 		Action a = new Action(ID, duree,t);
-		listActions.add(a);
+		list_action.add(a);
 	}
 	
 	
 	public Action getAction(int id){
 		Action resultat = null;
-		for (Action a : listActions) {
+		for (Action a : list_action) {
 			if( a.getIDAction() == id ){
 				resultat = a;
 			}
@@ -85,7 +85,7 @@ public class ListAction extends AbstractCollection<Action> {
 
 
 	/*********************************************************************/
-	/************SURCHARGE DES METHODES DE LA Collection******************/
+	/************SURCHARGE DES METHODES DE LA Collection******************
 
 	@Override
 	public Iterator<Action> iterator() {
@@ -101,7 +101,7 @@ public class ListAction extends AbstractCollection<Action> {
 	}
 
 	
-	/*********************************************************************/
+	*********************************************************************/
 	/*********************************************************************/
 	
 }

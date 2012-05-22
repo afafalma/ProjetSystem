@@ -3,16 +3,20 @@
  */
 package model;
 
-import java.util.AbstractCollection;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
 
-public class ListProcessus extends AbstractCollection<Processus>{
+public class ListProcessus extends ArrayList<Processus>{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static int ID;
-	private ArrayList<Processus> listProcessus;
+	private ListProcessus listProcessus;
 	
 	
 	
@@ -22,7 +26,7 @@ public class ListProcessus extends AbstractCollection<Processus>{
 	/**
 	 * @return the iD
 	 */
-	public static int getID() {
+	public int getID() {
 		return ID;
 	}
 
@@ -30,7 +34,7 @@ public class ListProcessus extends AbstractCollection<Processus>{
 	/**
 	 * @param iD the iD to set
 	 */
-	public static void setID(int iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 
@@ -45,7 +49,7 @@ public class ListProcessus extends AbstractCollection<Processus>{
 	/**
 	 * @param listProcessus the listProcessus to set
 	 */
-	public void setListProcessus(ArrayList<Processus> listProcessus) {
+	public void setListProcessus(ListProcessus listProcessus) {
 		this.listProcessus = listProcessus;
 	}
 	
@@ -58,11 +62,11 @@ public class ListProcessus extends AbstractCollection<Processus>{
 	 * Construit une nouvelle liste de serveurs.
 	 */
 	public ListProcessus(){
-		listProcessus = new ArrayList<Processus>();
+		listProcessus = new ListProcessus();
 	}
 	
 
-	public void ajouterProcessus(String n, ListAction l, int iDem, boolean rep, int prio, int tVie, int tAtt){
+	public void ajouterProcessus(int id, String n, ListAction l, int iDem, boolean rep, int prio, int tVie, int tAtt){
 		ID++;
 		Processus p = new Processus(ID, n, l, iDem, rep, prio, tVie, tAtt);
 		listProcessus.add(p);
@@ -104,7 +108,7 @@ public class ListProcessus extends AbstractCollection<Processus>{
 	@Override
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return listProcessus.size();
 	}
 	/*********************************************************************/
 	/*********************************************************************/

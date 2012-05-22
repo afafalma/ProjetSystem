@@ -2,7 +2,7 @@ package model;
 
 import model.ListAlgorithme.type;
 
-public class Algorithme {
+public abstract class Algorithme {
 	
 	private int num;
 	private String nom;
