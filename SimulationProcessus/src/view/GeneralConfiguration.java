@@ -23,6 +23,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JSlider;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -36,8 +37,12 @@ import javax.swing.UIManager;
 public class GeneralConfiguration {
 	
 	
-	final static int LenghtWindow = 530;
-	final static int HightWindow = 490;
+	final static int LenghtWindow = 800;
+	final static int HightWindow = 700;
+	
+	static final int FPS_MIN = 0;
+    static final int FPS_MAX = 20;
+    static final int FPS_INIT = 10;    //initial frames per second
 	
 	
 	// about the window
@@ -48,16 +53,23 @@ public class GeneralConfiguration {
 	private JPanel panelLow;
 	
 	private JLabel time = new JLabel("Global time : ");
-	private JComboBox combo = new JComboBox();
-	
-	private JLabel algo = new JLabel("Algorithm : ");
+	//private JComboBox combo = new JComboBox();
+	private SpinnerModel model =
+	        new SpinnerNumberModel(200, //initial value
+	                               50,  //min
+	                               500, //max
+	                               10); //step
+	private JSpinner globalTime_spinner = new JSpinner(model);
+    ///////////////////////////////
+    
+	private JLabel algo = new JLabel("   Algorithm : ");
 	private JComboBox combo1 = new JComboBox();
 	
-	private JLabel time2 = new JLabel("Global time of commutation : ");
+	private JLabel time2 = new JLabel("   Global time of commutation : ");
 	private JComboBox combo2 = new JComboBox();
 	
-	private JLabel number = new JLabel(" The number of processus : ");
-	//private JComboBox combo2 = new JComboBox();
+	private JLabel number = new JLabel("   Number of processus : ");
+	/*private JComboBox combo2 = new JComboBox();
 	private JCheckBox one = new JCheckBox("1");
 	private JCheckBox two = new JCheckBox("2");
 	private JCheckBox three = new JCheckBox("3");
@@ -68,9 +80,11 @@ public class GeneralConfiguration {
 	private JCheckBox eight = new JCheckBox("8");
 	private JCheckBox nine = new JCheckBox("9");
 	private JCheckBox ten = new JCheckBox("10");
-
+*/
+	JSlider nbProc_slider = new JSlider(JSlider.HORIZONTAL, FPS_MIN, FPS_MAX, FPS_INIT);
+    //nbProc_slider.addChangeListener(this);
 	
-	private JButton button = new JButton("Valid");
+	private JButton button = new JButton(" Valid ");
 	
 public GeneralConfiguration(){
 
@@ -98,13 +112,14 @@ public void createContainers(){
 	panelHigh.setPreferredSize(new Dimension(LenghtWindow, HightWindow) );
 	
 	panelHigh.add(time);
-	combo.addItem("100 ms");
+	/*combo.addItem("100 ms");
 	combo.addItem("150 ms");
 	combo.addItem("200 ms");
 	combo.addItem("250 ms");
 	combo.addItem("300 ms");
 	panelHigh.add(combo);
-	
+	*/
+	panelHigh.add(globalTime_spinner);
 	panelHigh.add(algo);
 	combo1.addItem("FIFO");
 	combo1.addItem("Short job first");
@@ -114,16 +129,22 @@ public void createContainers(){
 	panelHigh.add(combo1);
 	
 	panelHigh.add(time2);
-	combo2.addItem("0 ms");
-	combo2.addItem("10 ms");
-	combo2.addItem("15 ms");
-	combo2.addItem("20 ms");
-	combo2.addItem("25 ms");
-	combo2.addItem("30 ms");
+	combo2.addItem("      0 ms     ");
+	combo2.addItem("      10 ms    ");
+	combo2.addItem("      15 ms    ");
+	combo2.addItem("      20 ms    ");
+	combo2.addItem("      25 ms    ");
+	combo2.addItem("      30 ms    ");
 	panelHigh.add(combo2);
 	
 	panelHigh.add(number);
-	panelHigh.add(one);
+	//Turn on labels at major tick marks.
+	nbProc_slider.setMajorTickSpacing(5);
+	nbProc_slider.setMinorTickSpacing(1);
+	nbProc_slider.setPaintTicks(true);
+	nbProc_slider.setPaintLabels(true);
+	panelHigh.add(nbProc_slider);
+	/*panelHigh.add(one);
 	panelHigh.add(two);
 	panelHigh.add(three);
 	panelHigh.add(four);
@@ -133,9 +154,10 @@ public void createContainers(){
 	panelHigh.add(eight);
 	panelHigh.add(nine);
 	panelHigh.add(ten);
-	
-    button.setForeground(Color.RED);
+	*/
+    //button.setForeground(Color.RED);
     panelHigh.add(button);
+    panelHigh.setBorder(BorderFactory.createTitledBorder("General Configuration"));
 	
 	frame.add(panelLow, BorderLayout.CENTER);
 	frame.add(panelHigh, BorderLayout.NORTH);
@@ -155,7 +177,7 @@ public void CreateWindow(){
 	frame = new JFrame("General Configuration");
 	frame.setSize(LenghtWindow, HightWindow);
 	frame.setLayout(new BorderLayout());
-	frame.setLocation(200, 100);
+	frame.setLocation(200, 25);
 	//frame.add(time);
 	//frame.add(button);
 	//frame.add(container);
