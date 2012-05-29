@@ -68,7 +68,7 @@ public class ListAction extends ArrayList<Action> {
 	
 	public void ajoutAction(int duree, typeAction t){
 		ID++;
-		Action a = new Action(ID, duree,t);
+		Action a = new Action(ID, duree,t,false);
 		list_action.add(a);
 	}
 	
