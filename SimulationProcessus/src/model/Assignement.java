@@ -1,7 +1,9 @@
 package model;
 
+import java.io.Serializable;
 
-public class Assignement {
+
+public class Assignement  implements Serializable{
 
 	/**
 	 * 
